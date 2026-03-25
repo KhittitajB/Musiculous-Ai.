@@ -33,7 +33,7 @@ def song_create(request):
 
         # validate required fields
         if not song_name or not prompt:
-            return render(request, 'library/song_create.html', 
+            return render(request, 'library/song_create.html',
                         {'error': 'Song name and prompt are required.'})
 
         # create song with owner set to current user
@@ -101,6 +101,6 @@ def song_toggle_public(request, song_id):
         song.is_public = not song.is_public
         song.save()
         return redirect('song_detail', song_id=song.id)
-    
+
     # GET: show confirmation page
     return render(request, 'library/song_toggle_public.html', {'song': song})
